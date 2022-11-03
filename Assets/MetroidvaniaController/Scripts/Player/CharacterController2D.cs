@@ -20,6 +20,7 @@ public class CharacterController2D : MonoBehaviour
 	private float limitFallSpeed = 25f; // Limit fall speed
 
 	public bool canDoubleJump = true; //If player can double jump
+	public bool jumpBoots = false; //Has player collected powerup boots
 	[SerializeField] private float m_DashForce = 25f;
 	private bool canDash = true;
 	private bool isDashing = false; //If player is dashing
@@ -179,7 +180,7 @@ public class CharacterController2D : MonoBehaviour
 				particleJumpDown.Play();
 				particleJumpUp.Play();
 			}
-			else if (!m_Grounded && jump && canDoubleJump && !isWallSliding)
+			else if (!m_Grounded && jump && canDoubleJump && !isWallSliding && jumpBoots)
 			{
 				canDoubleJump = false;
 				m_Rigidbody2D.velocity = new Vector2(m_Rigidbody2D.velocity.x, 0);
