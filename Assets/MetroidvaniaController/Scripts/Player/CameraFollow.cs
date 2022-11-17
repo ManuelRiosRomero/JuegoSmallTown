@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -39,7 +39,7 @@ public class CameraFollow : MonoBehaviour
 		Vector3 newPosition = Target.position;
 		newPosition.z = -10;
 		if(newPosition.y < 0){
-			newPosition.y = 0;
+			newPosition.y = 0;	
 		}
 		transform.position = Vector3.Slerp(transform.position, newPosition, FollowSpeed * Time.deltaTime);
 

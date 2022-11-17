@@ -21,6 +21,7 @@ public class CharacterController2D : MonoBehaviour
 
 	public bool canDoubleJump = true; //If player can double jump
 	public bool jumpBoots = false; //Has player collected powerup boots
+	
 	[SerializeField] private float m_DashForce = 25f;
 	private bool canDash = true;
 	private bool isDashing = false; //If player is dashing
@@ -196,7 +197,7 @@ public class CharacterController2D : MonoBehaviour
 					m_WallCheck.localPosition = new Vector3(-m_WallCheck.localPosition.x, m_WallCheck.localPosition.y, 0);
 					Flip();
 					StartCoroutine(WaitToCheck(0.1f));
-					canDoubleJump = true;
+					//canDoubleJump = true;
 					animator.SetBool("IsWallSliding", true);
 				}
 				isDashing = false;
@@ -213,7 +214,7 @@ public class CharacterController2D : MonoBehaviour
 						m_Rigidbody2D.velocity = new Vector2(-transform.localScale.x * 2, -5);
 					}
 				}
-
+				/*
 				if (jump && isWallSliding)
 				{
 					animator.SetBool("IsJumping", true);
@@ -228,8 +229,9 @@ public class CharacterController2D : MonoBehaviour
 					oldWallSlidding = false;
 					m_WallCheck.localPosition = new Vector3(Mathf.Abs(m_WallCheck.localPosition.x), m_WallCheck.localPosition.y, 0);
 					canMove = false;
-				}
-				else if (dash && canDash)
+				} 
+				
+				else*/ if (dash && canDash)
 				{
 					isWallSliding = false;
 					animator.SetBool("IsWallSliding", false);
@@ -238,6 +240,7 @@ public class CharacterController2D : MonoBehaviour
 					canDoubleJump = true;
 					StartCoroutine(DashCooldown());
 				}
+				
 			}
 			else if (isWallSliding && !m_IsWall && canCheck) 
 			{
