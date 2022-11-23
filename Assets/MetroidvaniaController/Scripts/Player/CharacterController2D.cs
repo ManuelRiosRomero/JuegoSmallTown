@@ -21,6 +21,7 @@ public class CharacterController2D : MonoBehaviour
 
 	public bool canDoubleJump = true; //If player can double jump
 	public bool jumpBoots = false; //Has player collected powerup boots
+	public bool horseShoe = false; //has player collected powerup horseShoe
 	
 	[SerializeField] private float m_DashForce = 25f;
 	private bool canDash = true;
@@ -214,8 +215,8 @@ public class CharacterController2D : MonoBehaviour
 						m_Rigidbody2D.velocity = new Vector2(-transform.localScale.x * 2, -5);
 					}
 				}
-				/*
-				if (jump && isWallSliding)
+				
+				if (jump && isWallSliding && horseShoe)
 				{
 					animator.SetBool("IsJumping", true);
 					animator.SetBool("JumpUp", true); 
@@ -231,7 +232,7 @@ public class CharacterController2D : MonoBehaviour
 					canMove = false;
 				} 
 				
-				else*/ if (dash && canDash)
+				else if (dash && canDash)
 				{
 					isWallSliding = false;
 					animator.SetBool("IsWallSliding", false);
